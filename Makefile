@@ -13,6 +13,6 @@ wheel:
 	.venv/bin/flit wheel
 
 .venv:
-	virtualenv -p python3 .venv
+	python3 -m venv .venv
 
 .PHONY: clean develop upload wheel
