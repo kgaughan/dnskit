@@ -6,6 +6,9 @@ develop: .venv
 clean:
 	rm -rf .venv dist
 
+test:
+	.venv/bin/python -m unittest
+
 upload:
 	.venv/bin/flit wheel --upload
 
@@ -15,4 +18,4 @@ wheel:
 .venv:
 	python3 -m venv .venv
 
-.PHONY: clean develop upload wheel
+.PHONY: clean develop test upload wheel
