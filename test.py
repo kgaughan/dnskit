@@ -17,3 +17,13 @@ class TestName(unittest.TestCase):
         self.assertIsInstance(parent, dnskit._Name)
         self.assertEqual(parent.labels, ['com'])
         self.assertEqual(str(parent), 'com')
+
+class TestResolve(unittest.TestCase):
+
+    def test_resolve(self):
+        name = dnskit.name('talideon.com')
+        response = name.query('NS')
+        print([(answer, type(answer)) for answer in response])
+        registry_nss = name.parent.query('NS')
+        response = name.query('NS', nameservers=registry_nss)
+        print([(answer, type(answer)) for answer in response])
